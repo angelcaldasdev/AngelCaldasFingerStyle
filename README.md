@@ -5,7 +5,7 @@ Página web personal donde comparto mis videos de guitarra **fingerstyle**: cove
 🔗 **Ver la web:** https://angelcaldasdev.github.io/AngelCaldasFingerStyle/
 
 ## Contenido
-
+git add .
 - **Portada** con dos diapositivas (presentación y último video).
 - **Sobre mí**: breve presentación del guitarrista.
 - **Videos**: tarjetas con reproductor para cada video.
