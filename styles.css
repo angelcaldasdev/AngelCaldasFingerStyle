@@ -1,0 +1,132 @@
+/* ========== Variables de diseño ========== */
+:root {
+  --blanco: #ffffff;
+  --gris-fondo: #ececec;
+  --gris-borde: #e2e2e2;
+  --texto: #4a4a4a;
+  --texto-suave: #8a8a8a;
+  --dorado: #c9a06a;   /* etiquetas, como en la referencia */
+  --azul: #2f6db5;     /* acento del logo */
+  --ancho-maximo: 1080px;
+  --altura-encabezado: 80px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--altura-encabezado); }
+body {
+  font-family: "Open Sans", sans-serif;
+  color: var(--texto);
+  background: var(--blanco);
+  line-height: 1.7;
+}
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 3px solid var(--azul); outline-offset: 3px; }
+
+.contenedor { width: min(100% - 2rem, var(--ancho-maximo)); margin-inline: auto; }
+
+.etiqueta {
+  font: 700 0.85rem "Raleway", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dorado);
+  margin-bottom: 1rem;
+}
+
+/* ========== Encabezado fijo ========== */
+.encabezado {
+  position: fixed; inset: 0 0 auto 0; z-index: 10;
+  height: var(--altura-encabezado);
+  background: var(--blanco);
+  border-bottom: 1px solid var(--gris-borde);
+}
+.encabezado__interior { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.logo { font: 500 1.6rem "Raleway", sans-serif; color: var(--texto); }
+.logo span { color: var(--azul); }
+.menu { display: flex; gap: 2rem; }
+.menu a { font-weight: 600; color: var(--texto-suave); transition: color .2s; }
+.menu a:hover { color: var(--texto); }
+
+/* ========== Portada ========== */
+.portada {
+  position: relative;
+  margin-top: var(--altura-encabezado);
+  background: var(--gris-fondo);
+  min-height: 560px;
+  overflow: hidden;
+}
+.diapositiva { display: none; min-height: 560px; }
+.diapositiva.activa { display: block; }
+.portada__interior {
+  min-height: 560px;
+  display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem;
+}
+.portada__texto { max-width: 400px; }
+.portada__texto h1 {
+  font: 700 2.6rem/1.15 "Raleway", sans-serif;
+  color: var(--texto);
+  margin-bottom: 1.5rem;
+}
+.portada__texto p { color: var(--texto-suave); margin-bottom: 1.5rem; }
+.portada__foto {
+  align-self: end; height: 480px;
+  background: url("img/foto-perfil.jpg") center bottom / contain no-repeat;
+  filter: grayscale(1); /* blanco y negro, como la referencia */
+}
+.portada__foto--dos { background-image: url("img/guitarra.jpg"); background-size: cover; filter: none; }
+/* Si aún no pones tus fotos, se ve un fondo suave en lugar de un hueco */
+.portada__foto { background-color: rgba(0, 0, 0, .04); }
+
+.boton {
+  display: inline-block; padding: .7rem 1.6rem;
+  background: var(--azul); color: var(--blanco);
+  font-weight: 600; border-radius: 2px; transition: background .2s;
+}
+.boton:hover { background: #245a9a; }
+
+.puntos { position: absolute; bottom: 1.2rem; left: 0; right: 0; display: flex; justify-content: center; gap: .6rem; }
+.punto {
+  width: 12px; height: 12px; border-radius: 50%; border: 0; cursor: pointer;
+  background: #bdbdbd;
+}
+.punto.activo { background: var(--blanco); outline: 1px solid #bdbdbd; }
+
+/* ========== Secciones ========== */
+.seccion { padding: 5rem 0; }
+.seccion--gris { background: #f6f6f6; }
+
+.sobre-mi { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+.sobre-mi__titular { font: 500 2rem/1.2 "Raleway", sans-serif; color: var(--texto); }
+.sobre-mi__texto p { margin-bottom: 1rem; max-width: 60ch; }
+
+/* ========== Videos ========== */
+.rejilla-videos { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.video { background: var(--blanco); border: 1px solid var(--gris-borde); }
+.video__marco { position: relative; aspect-ratio: 16 / 9; background: #000; }
+.video__marco img, .video__marco iframe, .video__marco video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+.video__reproducir {
+  position: absolute; inset: 0; width: 100%; border: 0; cursor: pointer; background: transparent;
+}
+.video__reproducir::after {
+  content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  border-style: solid; border-width: 14px 0 14px 24px; border-color: transparent transparent transparent #fff;
+  filter: drop-shadow(0 0 6px rgba(0,0,0,.6));
+}
+.video__titulo { padding: .9rem 1rem; font: 700 1rem "Raleway", sans-serif; color: var(--texto); }
+
+/* ========== Pie con enlaces ========== */
+.pie { padding: 4rem 0 2rem; border-top: 1px solid var(--gris-borde); text-align: center; }
+.enlaces { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 2.5rem; margin-bottom: 3rem; }
+.enlaces a { display: grid; justify-items: center; gap: .5rem; color: var(--texto-suave); font-weight: 600; transition: color .2s; }
+.enlaces a:hover { color: var(--azul); }
+.enlaces svg { width: 44px; height: 44px; fill: currentColor; }
+.pie__copyright { font-size: .85rem; color: var(--texto-suave); }
+
+/* ========== Móvil ========== */
+@media (max-width: 760px) {
+  .menu { gap: 1rem; font-size: .9rem; }
+  .logo { font-size: 1rem; }
+  .portada__interior, .sobre-mi { grid-template-columns: 1fr; }
+  .portada__foto { height: 300px; }
+  .portada__texto h1 { font-size: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
