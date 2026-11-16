@@ -54,10 +54,11 @@ a { color: inherit; text-decoration: none; }
   min-height: 560px;
   overflow: hidden;
 }
-.diapositiva { display: none; min-height: 560px; }
+.diapositiva { display: none; }
 .diapositiva.activa { display: block; }
 .portada__interior {
   min-height: 560px;
+  padding: 3rem 0 4.5rem;            /* aire arriba y espacio abajo para los puntos */
   display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem;
 }
 .portada__texto { max-width: 400px; }
@@ -67,14 +68,17 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 1.5rem;
 }
 .portada__texto p { color: var(--texto-suave); margin-bottom: 1.5rem; }
+
+/* La foto se ve COMPLETA (sin recortes): el tamaño se ajusta a la imagen
+   y nunca pasa de 440px de alto ni del ancho de su columna. */
 .portada__foto {
-  align-self: end; height: 480px;
-  background: url("img/foto-perfil.jpg") center bottom / contain no-repeat;
-  filter: grayscale(1); /* blanco y negro, como la referencia */
+  display: block;
+  justify-self: end;                 /* pegada al borde derecho del contenido */
+  width: auto; height: auto;
+  max-width: 100%; max-height: 440px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
 }
-.portada__foto--dos { background-image: url("img/guitarra.jpg"); background-size: cover; filter: none; }
-/* Si aún no pones tus fotos, se ve un fondo suave en lugar de un hueco */
-.portada__foto { background-color: rgba(0, 0, 0, .04); }
+.portada__foto--bn { filter: grayscale(1); }  /* blanco y negro, como la referencia */
 
 .boton {
   display: inline-block; padding: .7rem 1.6rem;
@@ -126,7 +130,7 @@ a { color: inherit; text-decoration: none; }
   .menu { gap: 1rem; font-size: .9rem; }
   .logo { font-size: 1rem; }
   .portada__interior, .sobre-mi { grid-template-columns: 1fr; }
-  .portada__foto { height: 300px; }
+  .portada__foto { justify-self: center; max-height: 300px; }
   .portada__texto h1 { font-size: 2rem; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
