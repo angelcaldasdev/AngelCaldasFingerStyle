@@ -9,8 +9,8 @@
 const listaVideos = [
   { titulo: "Come as you are",   archivo: "Angel Caldas FingerStyle - Come as you are.mp4" },
   { titulo: "Yesterday",         archivo: "Angel Caldas FingerStyle - Yesterday.mp4" },
-  { titulo: "Jingle bells",      archivo: "Angel Caldas FingerStye - Jingle bells.mp4" },
-  { titulo: "Right here waiting", archivo: "Angel Caldas FingerSyle - Right here waiting.mp4" }
+  { titulo: "Jingle bells",      archivo: "Angel Caldas FingerStyle - Jingle bells.mp4" },
+  { titulo: "Right here waiting", archivo: "Angel Caldas FingerStyle - Right here waiting.mp4" }
 ];
 
 // ---------- 2. TUS ENLACES ----------
