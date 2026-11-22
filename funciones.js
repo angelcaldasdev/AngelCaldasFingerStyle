@@ -7,14 +7,18 @@
 // "archivo" es el nombre exacto del .mp4 dentro de la carpeta videos/.
 // Para agregar más videos: copia el .mp4 a esa carpeta y añade una línea aquí.
 const listaVideos = [
-  { titulo: "Come as you are",   archivo: "Angel Caldas FingerStyle - Come as you are.mp4" },
-  { titulo: "Yesterday",         archivo: "Angel Caldas FingerStyle - Yesterday.mp4" },
-  { titulo: "Jingle bells",      archivo: "Angel Caldas FingerStyle - Jingle bells.mp4" },
-  { titulo: "Right here waiting", archivo: "Angel Caldas FingerStyle - Right here waiting.mp4" }
+  { titulo: "Come as you are",       archivo: "Angel Caldas FingerStyle - Come as you are.mp4" },
+  { titulo: "Intro Come as you are", archivo: "Angel Caldas FingerStyle - Intro Come as you are.mp4" },
+  { titulo: "Yesterday",             archivo: "Angel Caldas FingerStyle - Yesterday.mp4" },
+  { titulo: "Jingle bells",          archivo: "Angel Caldas FingerStyle - Jingle bells.mp4" },
+  { titulo: "Right here waiting",    archivo: "Angel Caldas FingerStyle - Right here waiting.mp4" },
+  { titulo: "Dust in the wind",      archivo: "Angel Caldas FingerStyle - Dust in the wind.mp4" },
+  { titulo: "Make you feel my love", archivo: "Angel Caldas FingerStyle - Make you feel my love.mp4" },
+  { titulo: "My heart will go on",   archivo: "Angel Caldas FingerStyle - My heart will go on.mp4" },
+  { titulo: "River flows in you",    archivo: "Angel Caldas FingerStyle - River flows in you.mp4" }
 ];
 
-// ---------- 2. TUS ENLACES ----------
-// Cambia las direcciones por las tuyas. Puedes borrar o añadir líneas.
+// ---------- 2. TUS ENLACES (aparecen en el encabezado, junto al nombre) ----------
 const listaEnlaces = [
   {
     nombre: "YouTube",
@@ -31,31 +35,38 @@ const listaEnlaces = [
 // ---------- 3. VIDEOS: cada tarjeta lleva su reproductor ----------
 const contenedorVideos = document.getElementById("rejillaVideos");
 
-listaVideos.forEach((video) => {
+listaVideos.forEach((video, posicion) => {
   // encodeURI convierte los espacios del nombre del archivo en %20
   const rutaVideo = "videos/" + encodeURI(video.archivo);
 
   const tarjeta = document.createElement("article");
-  tarjeta.className = "video";
-  // "#t=0.5" hace que se vea un cuadro del video como portada antes de reproducirlo
+  tarjeta.className = "video revelar";
+  tarjeta.style.transitionDelay = (posicion % 3) * 0.12 + "s"; // aparecen en cascada
   tarjeta.innerHTML = `
     <div class="video__marco">
       <video controls preload="metadata" playsinline src="${rutaVideo}#t=0.5"></video>
     </div>
     <h3 class="video__titulo">${video.titulo}</h3>`;
 
+  // Al reproducir uno, se pausan los demás
+  tarjeta.querySelector("video").addEventListener("play", (evento) => {
+    document.querySelectorAll(".video video").forEach((otro) => {
+      if (otro !== evento.target) otro.pause();
+    });
+  });
+
   contenedorVideos.appendChild(tarjeta);
 });
 
-// ---------- 4. ENLACES DEL PIE ----------
+// ---------- 4. ENLACES DEL ENCABEZADO ----------
 const contenedorEnlaces = document.getElementById("listaEnlaces");
 
 listaEnlaces.forEach((enlace) => {
   const elemento = document.createElement("li");
   elemento.innerHTML = `
-    <a href="${enlace.direccion}" target="_blank" rel="noopener noreferrer">
+    <a class="${enlace.nombre.toLowerCase()}" href="${enlace.direccion}" target="_blank" rel="noopener noreferrer" aria-label="${enlace.nombre}">
       <svg viewBox="0 0 24 24" aria-hidden="true">${enlace.icono}</svg>
-      <span>${enlace.nombre}</span>
+      <span class="sr-only">${enlace.nombre}</span>
     </a>`;
   contenedorEnlaces.appendChild(elemento);
 });
@@ -90,5 +101,32 @@ diapositivas.forEach((_, indice) => {
 mostrarDiapositiva(0);
 reiniciarTemporizador();
 
-// ---------- 6. AÑO DEL PIE ----------
+// ---------- 6. SCROLL: barra de progreso, sombra del encabezado y aparición ----------
+const barraProgreso = document.getElementById("progreso");
+const encabezado = document.getElementById("encabezado");
+
+function alHacerScroll() {
+  const recorrido = document.documentElement.scrollHeight - window.innerHeight;
+  barraProgreso.style.width = (recorrido > 0 ? (window.scrollY / recorrido) * 100 : 0) + "%";
+  encabezado.classList.toggle("compacto", window.scrollY > 10);
+}
+window.addEventListener("scroll", alHacerScroll, { passive: true });
+alHacerScroll();
+
+const elementosRevelar = document.querySelectorAll(".revelar");
+if ("IntersectionObserver" in window) {
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add("visible");
+        observador.unobserve(entrada.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  elementosRevelar.forEach((el) => observador.observe(el));
+} else {
+  elementosRevelar.forEach((el) => el.classList.add("visible"));
+}
+
+// ---------- 7. AÑO DEL PIE ----------
 document.getElementById("anioActual").textContent = new Date().getFullYear();

@@ -1,67 +1,63 @@
-# Angel Caldas FingerStyle 🎸
+# 🎸 Angel Caldas FingerStyle
 
-Página web personal donde comparto mis videos de guitarra **fingerstyle**: covers y arreglos acústicos tocados con una sola guitarra.
+Página web personal donde comparto mis videos de **guitarra fingerstyle**: covers y arreglos acústicos tocados con una sola guitarra.
 
-🔗 **Ver la web:** https://angelcaldasdev.github.io/AngelCaldasFingerStyle/
+🔗 **Ver la página:** [angelcaldasdev.github.io/AngelCaldasFingerStyle](https://angelcaldasdev.github.io/AngelCaldasFingerStyle/)
 
-## Contenido
-git add .
-- **Portada** con dos diapositivas (presentación y último video).
-- **Sobre mí**: breve presentación del guitarrista.
-- **Videos**: tarjetas con reproductor para cada video.
-- **Enlaces** al final de la página: YouTube e Instagram.
+## ✨ Características
 
-## Tecnologías
+- Portada con 3 diapositivas que cambian solas (con puntos para navegar).
+- Galería de videos con reproductor propio; al reproducir uno, los demás se pausan.
+- Enlaces a YouTube e Instagram en el encabezado, junto al nombre.
+- Animaciones suaves, barra de progreso de lectura y aparición de tarjetas al hacer scroll.
+- Diseño responsive (celular, tablet y PC) y respeto por `prefers-reduced-motion`.
 
-- HTML5
-- CSS3 (diseño responsive, variables CSS)
-- JavaScript (sin librerías)
+## 🛠️ Tecnologías
 
-## Estructura del proyecto
+HTML5 · CSS3 · JavaScript (sin librerías) · Tipografías Raleway y Open Sans · GitHub Pages
+
+## 📁 Estructura
 
 ```
 AngelCaldasFingerStyle/
-├── index.html      # Estructura de la página
-├── styles.css      # Estilos
-├── funciones.js    # Lista de videos, enlaces y diapositivas
-├── img/            # Fotos (foto-perfil.jpg, guitarra.jpg)
-└── videos/         # Videos en formato .mp4
+├── img/            # fotos de la portada (foto-perfil, guitarra, acustica)
+├── videos/         # archivos .mp4
+├── index.html      # estructura de la página
+├── styles.css      # estilos y animaciones
+├── funciones.js    # lista de videos, enlaces y comportamiento
+└── README.md
 ```
 
-## Cómo ejecutarlo en local
+## ▶️ Ejecutar en local
 
 1. Clona el repositorio:
    ```bash
    git clone https://github.com/angelcaldasdev/AngelCaldasFingerStyle.git
    ```
-2. Ábrelo en VS Code.
-3. Instala la extensión **Live Server**, haz clic derecho en `index.html` y elige **Open with Live Server**.
+2. Abre la carpeta en VS Code y usa la extensión **Live Server** (o abre `index.html` en el navegador).
 
-## Cómo agregar un video nuevo
+## ➕ Agregar un video nuevo
 
-1. Copia el archivo `.mp4` a la carpeta `videos/`.
-2. Abre `funciones.js` y añade una línea a `listaVideos`:
-   ```js
-   { titulo: "Nombre de la canción", archivo: "nombre-exacto-del-archivo.mp4" },
+1. Copia el `.mp4` a la carpeta `videos/`.
+2. Añade una línea en `listaVideos` dentro de `funciones.js`:
+   ```javascript
+   { titulo: "Nombre de la canción", archivo: "Angel Caldas FingerStyle - Nombre de la canción.mp4" },
    ```
-3. Sube los cambios:
+3. El nombre del archivo debe coincidir **letra por letra** (GitHub Pages distingue mayúsculas).
+4. Sube los cambios:
    ```bash
    git add .
-   git commit -m "Agrego nuevo video"
+   git commit -m "Agrego video: Nombre de la canción"
    git push
    ```
 
-> GitHub rechaza archivos de más de 100 MB. Para videos pesados conviene comprimirlos o subirlos a YouTube.
+> ⚠️ GitHub rechaza archivos de más de **100 MB**. Si un video pesa más, comprímelo (por ejemplo con HandBrake).
 
-## Redes
+## 🌐 Publicación
 
-- YouTube: [@angelcaldas.musica](https://youtube.com/@angelcaldas.musica)
-- Instagram: [@angel_rafael_01](https://www.instagram.com/angel_rafael_01)
+El sitio se publica con **GitHub Pages** desde la rama `main`. Después de cada `git push`, los cambios tardan 1 o 2 minutos en verse (recarga con `Ctrl + F5`).
 
-## Inspiración
+## 👤 Autor
 
-El diseño toma como referencia la web de [Sungha Jung](https://sunghajung.com), guitarrista fingerstyle a quien admiro mucho.
-
-## Autor
-
-**Angel Caldas** · Lima, Perú
+**Angel Rafael Caldas Ocmín** · Lima, Perú
+[YouTube](https://youtube.com/@angelcaldas.musica) · [Instagram](https://www.instagram.com/angel_rafael_01) · [GitHub](https://github.com/angelcaldasdev)

@@ -7,40 +7,44 @@
   <meta name="description" content="Videos de guitarra fingerstyle: covers y arreglos acústicos.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Barra de progreso de lectura -->
+  <div class="progreso" id="progreso"></div>
 
-  <!-- ENCABEZADO -->
-  <header class="encabezado">
+  <!-- ENCABEZADO: nombre + enlaces al costado -->
+  <header class="encabezado" id="encabezado">
     <div class="contenedor encabezado__interior">
-      <a href="#inicio" class="logo">ANGEL CALDAS <span>FINGERSTYLE</span></a>
+      <div class="marca">
+        <a href="#inicio" class="logo">ANGEL CALDAS <span>FINGERSTYLE</span></a>
+        <!-- Los enlaces se generan desde funciones.js (listaEnlaces) -->
+        <ul class="redes" id="listaEnlaces"></ul>
+      </div>
       <nav class="menu" aria-label="Principal">
         <a href="#sobre-mi">Sobre mí</a>
         <a href="#videos">Videos</a>
-        <a href="#enlaces">Enlaces</a>
       </nav>
     </div>
   </header>
 
   <main id="inicio">
-
-    <!-- PORTADA: dos diapositivas, como la referencia -->
+    <!-- PORTADA: 3 diapositivas, cada una con su color -->
     <section class="portada" aria-label="Portada">
-      <div class="diapositiva activa">
+      <div class="diapositiva tema-azul activa">
         <div class="contenedor portada__interior">
           <div class="portada__texto">
             <p class="etiqueta">Guitarrista fingerstyle</p>
-            <h1>ANGEL CALDAS FINGERSTYLE</h1>
+            <h1>Angel Caldas FingerStyle</h1>
             <p>Guitarrista fingerstyle desde Lima, Perú. Toco covers y arreglos en guitarra acústica, y subo mis videos a YouTube.</p>
             <a class="boton" href="#videos">Ver videos</a>
           </div>
-          <!-- Foto de la primera diapositiva: img/foto-perfil.jpg -->
           <img class="portada__foto" src="img/foto-perfil.jpg" alt="Angel Caldas con su guitarra">
         </div>
       </div>
-      <div class="diapositiva">
+
+      <div class="diapositiva tema-dorado">
         <div class="contenedor portada__interior">
           <div class="portada__texto">
             <p class="etiqueta">Nuevo video</p>
@@ -48,23 +52,35 @@
             <p>Escúchala en mi canal y suscríbete para no perderte la próxima.</p>
             <a class="boton" href="https://youtube.com/@angelcaldas.musica" target="_blank" rel="noopener noreferrer">Ir a mi canal</a>
           </div>
-          <!-- Foto de la segunda diapositiva: img/guitarra.jpg -->
           <img class="portada__foto" src="img/guitarra.jpg" alt="Guitarra acústica">
         </div>
       </div>
+
+      <div class="diapositiva tema-verde">
+        <div class="contenedor portada__interior">
+          <div class="portada__texto">
+            <p class="etiqueta">Guitarra acústica</p>
+            <h1>Una sola guitarra, toda la música</h1>
+            <p>Melodía, bajo y ritmo a la vez: así suena el fingerstyle.</p>
+            <a class="boton" href="#videos">Escuchar ahora</a>
+          </div>
+          <img class="portada__foto" src="img/acustica.jpg" alt="Guitarra acústica">
+        </div>
+      </div>
+
       <div class="puntos" id="puntos" aria-label="Cambiar diapositiva"></div>
     </section>
 
     <!-- SOBRE MÍ -->
     <section class="seccion" id="sobre-mi">
-      <div class="contenedor sobre-mi">
+      <div class="contenedor sobre-mi revelar">
         <div>
           <h2 class="etiqueta">Sobre mí</h2>
           <p class="sobre-mi__titular">Hola, soy Angel.</p>
         </div>
         <div class="sobre-mi__texto">
           <p>Toco guitarra fingerstyle: melodía, bajo y ritmo a la vez, con una sola guitarra. Esta página reúne mis videos y arreglos.</p>
-          <p>Disfruta de mi música y no dudes en suscribirte al canal de Youtube.</p>
+          <p>Disfruta de mi música y no dudes en suscribirte al canal de YouTube.</p>
         </div>
       </div>
     </section>
@@ -77,15 +93,11 @@
         <div class="rejilla-videos" id="rejillaVideos"></div>
       </div>
     </section>
-
   </main>
 
-  <!-- ENLACES (al final de la página) -->
-  <footer class="pie" id="enlaces">
+  <footer class="pie">
     <div class="contenedor">
-      <h2 class="etiqueta">Mis enlaces</h2>
-      <ul class="enlaces" id="listaEnlaces"></ul>
-      <p class="pie__copyright">© <span id="anioActual"></span> Angel Caldas</p>
+      <p class="pie__copyright">© <span id="anioActual"></span> Angel Caldas · Lima, Perú</p>
     </div>
   </footer>
 
