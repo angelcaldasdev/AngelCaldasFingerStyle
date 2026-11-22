@@ -7,8 +7,10 @@
 // "archivo" es el nombre exacto del .mp4 dentro de la carpeta videos/.
 // Para agregar más videos: copia el .mp4 a esa carpeta y añade una línea aquí.
 const listaVideos = [
-  { titulo: "Come as you are", archivo: "Angel Caldas FingerStyle - Come as you are.mp4" },
-  { titulo: "Yesterday",       archivo: "Angel Caldas FingerStyle - Yesterday.mp4" }
+  { titulo: "Come as you are",   archivo: "Angel Caldas FingerStyle - Come as you are.mp4" },
+  { titulo: "Yesterday",         archivo: "Angel Caldas FingerStyle - Yesterday.mp4" },
+  { titulo: "Jingle bells",      archivo: "Angel Caldas FingerStye - Jingle bells.mp4" },
+  { titulo: "Right here waiting", archivo: "Angel Caldas FingerSyle - Right here waiting.mp4" }
 ];
 
 // ---------- 2. TUS ENLACES ----------
